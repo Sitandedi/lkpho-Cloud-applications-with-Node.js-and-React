@@ -32,3 +32,16 @@ app.get("/:name", (req, res) => {
 app.listen(3333, () => {
     console.log(`Listening at http://localhost:3333`);
 });
+
+// Define an array with the name of the months
+const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+// Define a route to fetch for a particular onthbased on the month number
+app.get("/fetchMonth/:num", (req, res) => {
+    let num = req.params.num;
+    if (1 <= num && num <= 12) {
+        const month = months[num - 1];
+        res.send("The month fetch is " + month);
+    } else {
+        res.send("Not a valid month number");
+    }
+})
